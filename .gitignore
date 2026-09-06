@@ -11,6 +11,12 @@ dist/
 *.ipa
 *.log
 
+# Artefatos de execução dos testes
+allure-results/
+allure-report/
+wdio-logs/
+.tsbuildinfo
+
 # Ambiente e IDE
 .env
 .idea/
