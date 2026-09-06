@@ -1,0 +1,18 @@
+# Documentação interna do projeto (não deve ser publicada)
+/internal-docs/
+
+# Dependências e builds (ajustar conforme a stack escolhida)
+node_modules/
+target/
+build/
+dist/
+.gradle/
+*.apk
+*.ipa
+*.log
+
+# Ambiente e IDE
+.env
+.idea/
+.vscode/
+*.iml
