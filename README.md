@@ -189,6 +189,7 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 | Funcionalidade | Cenário                       | Arquivo                                                      |
 | -------------- | ----------------------------- | ------------------------------------------------------------ |
 | Login          | Login com credenciais válidas | [`test/features/login.feature`](test/features/login.feature) |
+| Login          | Login com usuário bloqueado   | [`test/features/login.feature`](test/features/login.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
 
