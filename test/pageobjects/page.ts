@@ -60,20 +60,27 @@ export default abstract class Page {
    * carrinho, sem dados de sessoes anteriores). Chamado antes de cada
    * cenario (ver test/step-definitions/hooks.ts).
    *
-   * A opcao "Reset App State" disponivel no menu do proprio app foi
-   * descartada para isso: alem de exigir navegar por dois dialogos nativos,
-   * ela nao desloga o usuario, e reabrir o menu logo em seguida (para
-   * deslogar manualmente) se mostrou nao-confiavel em execucao automatizada
-   * (mesmo funcionando de forma consistente quando reproduzido manualmente
-   * mais devagar). Usar os comandos nativos do driver (equivalentes a
-   * `adb shell pm clear` + relancar o app) e o mesmo mecanismo usado com
-   * sucesso durante toda a investigacao manual, e nao depende de nenhuma
-   * navegacao dentro do app.
+   * Duas abordagens foram tentadas antes desta e descartadas:
+   * 1. A opcao "Reset App State" do menu do proprio app: alem de exigir
+   *    navegar por dois dialogos nativos, ela nao desloga o usuario, e
+   *    reabrir o menu logo em seguida se mostrou nao-confiavel em execucao
+   *    automatizada.
+   * 2. Comandos nativos do driver (`mobile: terminateApp` + `clearApp` +
+   *    `activateApp`, equivalentes a `adb shell pm clear` + relancar o
+   *    app): funcionou de forma confiavel no emulador local, mas falhou de
+   *    forma consistente no CI (o app relancado nao ficava navegavel
+   *    dentro do timeout configurado, possivelmente por uma verificacao de
+   *    seguranca do Android/emulador que so acontece no primeiro lancamento
+   *    de um AVD novo).
+   *
+   * `browser.reloadSession()` cria uma sessao Appium inteiramente nova
+   * (reinstala/relanca o app do zero), usando o mesmo caminho de
+   * inicializacao que ja e comprovadamente confiavel no inicio de cada
+   * execucao de teste - em vez de tentar reproduzir esse comportamento
+   * manualmente com comandos soltos.
    */
   public async resetApp(): Promise<void> {
-    await browser.execute('mobile: terminateApp', { appId: this.appId });
-    await browser.execute('mobile: clearApp', { appId: this.appId });
-    await browser.execute('mobile: activateApp', { appId: this.appId });
+    await browser.reloadSession();
   }
 
   public async pause(ms: number): Promise<void> {
