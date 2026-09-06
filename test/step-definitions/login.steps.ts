@@ -21,3 +21,8 @@ Then('o menu do aplicativo deve exibir a opção {string}', async (menuOption: s
   const isVisible = await LoginPage.isMenuOptionVisible(menuOption);
   expect(isVisible).toBe(true);
 });
+
+Then('uma mensagem de erro {string} deve ser exibida', async (expectedMessage: string) => {
+  const actualMessage = await LoginPage.getErrorMessageText();
+  expect(actualMessage).toBe(expectedMessage);
+});

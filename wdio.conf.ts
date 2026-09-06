@@ -45,11 +45,11 @@ export const config = {
 
   logLevel: 'info',
   bail: 0,
-  // 20s (em vez do padrao de 5s/10s) porque o primeiro boot do app num
+  // 30s (em vez do padrao de 5s/10s) porque o primeiro boot do app num
   // emulador "frio" (ex.: no CI, onde o AVD acabou de ser criado) demora
   // mais para renderizar a tela inicial do que num emulador local ja
   // aquecido de execucoes anteriores.
-  waitforTimeout: 20000,
+  waitforTimeout: 30000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
 
