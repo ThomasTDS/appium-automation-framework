@@ -173,7 +173,12 @@ npm run format:check
 
 # Formata o código automaticamente
 npm run format
+
+# Verifica erros de tipo do TypeScript
+npm run typecheck
 ```
+
+Essas três verificações (lint, formatação e tipos) rodam automaticamente em um job dedicado do CI a cada `push` ou _pull request_, de forma independente e em paralelo à execução dos testes end-to-end.
 
 ## Integração contínua
 
