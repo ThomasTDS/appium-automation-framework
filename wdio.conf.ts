@@ -1,7 +1,15 @@
 import path from 'node:path';
+import { globSync } from 'node:fs';
 import { config as loadEnv } from 'dotenv';
 
 loadEnv();
+
+// O @wdio/cucumber-framework tem um bug no Windows: ele converte o padrao
+// glob passado em `cucumberOpts.require` para uma URL `file://` antes de
+// resolve-lo, o que quebra a busca (globSync nao entende uma URL como
+// padrao). Por isso a lista de arquivos e resolvida aqui, com o glob
+// nativo do Node, e passada ja como caminhos concretos.
+const stepDefinitions = globSync('./test/step-definitions/**/*.ts');
 
 // Caminho do APK do app sob teste. O arquivo nao fica versionado no
 // repositorio (ver .gitignore); cada pessoa que for rodar os testes baixa o
@@ -64,7 +72,7 @@ export const config = {
   ],
 
   cucumberOpts: {
-    require: ['./test/step-definitions/**/*.ts'],
+    require: stepDefinitions,
     backtrace: false,
     requireModule: [],
     dryRun: false,
