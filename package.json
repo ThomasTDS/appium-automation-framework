@@ -10,7 +10,6 @@
   },
   "scripts": {
     "test": "wdio run ./wdio.conf.ts",
-    "appium:install-driver": "appium driver install uiautomator2",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
