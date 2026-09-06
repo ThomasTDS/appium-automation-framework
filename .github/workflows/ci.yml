@@ -30,9 +30,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Instalar driver UiAutomator2 do Appium
-        run: npx appium driver install uiautomator2
-
       - name: Baixar APK do aplicativo sob teste (Sauce Labs My Demo App)
         run: |
           mkdir -p ./apps
