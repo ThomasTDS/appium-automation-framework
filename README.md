@@ -186,10 +186,12 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 
 ## Cenários de teste implementados
 
-| Funcionalidade | Cenário                       | Arquivo                                                      |
-| -------------- | ----------------------------- | ------------------------------------------------------------ |
-| Login          | Login com credenciais válidas | [`test/features/login.feature`](test/features/login.feature) |
-| Login          | Login com usuário bloqueado   | [`test/features/login.feature`](test/features/login.feature) |
+| Funcionalidade | Cenário                           | Arquivo                                                            |
+| -------------- | --------------------------------- | ------------------------------------------------------------------ |
+| Login          | Login com credenciais válidas     | [`test/features/login.feature`](test/features/login.feature)       |
+| Login          | Login com usuário bloqueado       | [`test/features/login.feature`](test/features/login.feature)       |
+| Carrinho       | Adicionar produto ao carrinho     | [`test/features/carrinho.feature`](test/features/carrinho.feature) |
+| Carrinho       | Finalizar compra sem estar logado | [`test/features/carrinho.feature`](test/features/carrinho.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
 
