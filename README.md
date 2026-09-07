@@ -23,6 +23,7 @@ Este é um projeto de portfólio, desenvolvido para demonstrar, na prática, con
 - [Padrões de qualidade de código](#padrões-de-qualidade-de-código)
 - [Integração contínua](#integração-contínua)
 - [Cenários de teste implementados](#cenários-de-teste-implementados)
+- [Reportando problemas](#reportando-problemas)
 - [Licença](#licença)
 - [Autor](#autor)
 
@@ -194,6 +195,10 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 | Carrinho       | Finalizar compra sem estar logado | [`test/features/carrinho.feature`](test/features/carrinho.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
+
+## Reportando problemas
+
+Bugs encontrados na aplicação sob teste, no pipeline de CI ou na própria automação são registrados como [Issues do GitHub](../../issues/new/choose), usando um template padronizado que cobre ambiente, severidade, prioridade, passos de reprodução e causa raiz.
 
 ## Licença
 
