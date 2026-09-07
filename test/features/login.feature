@@ -15,3 +15,8 @@ Funcionalidade: Login no aplicativo
     Quando ele preenche o usuário "alice@example.com" e a senha "10203040"
     E toca no botão de login
     Então uma mensagem de erro "Sorry this user has been locked out." deve ser exibida
+
+  Cenário: Login com campos vazios
+    Dado que o usuário está na tela de login
+    Quando ele toca no botão de login sem preencher usuário ou senha
+    Então a mensagem "Username is required" deve ser exibida

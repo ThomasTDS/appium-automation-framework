@@ -18,6 +18,10 @@ When('ele tenta finalizar a compra sem estar logado', async () => {
   await CartPage.proceedToCheckout();
 });
 
+When('ele remove o item do carrinho', async () => {
+  await CartPage.removeFirstItem();
+});
+
 Then('o carrinho deve exibir {int} item', async (expectedCount: number) => {
   const badgeText = await ProductsPage.getCartBadgeCount();
   expect(Number(badgeText)).toBe(expectedCount);
@@ -31,4 +35,9 @@ Then('o item no carrinho deve ser {string}', async (expectedTitle: string) => {
 Then('o aplicativo deve solicitar o login', async () => {
   const isOnLoginScreen = await LoginPage.isDisplayed();
   expect(isOnLoginScreen).toBe(true);
+});
+
+Then('o carrinho deve exibir a mensagem {string}', async (expectedMessage: string) => {
+  const isVisible = await CartPage.isTextDisplayed(expectedMessage);
+  expect(isVisible).toBe(true);
 });

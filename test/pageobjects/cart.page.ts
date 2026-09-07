@@ -10,12 +10,20 @@ class CartPage extends Page {
     return $('~Confirms products for checkout');
   }
 
+  private get removeItemButton() {
+    return $('~Removes product from cart');
+  }
+
   public async getFirstItemTitle(): Promise<string> {
     return this.getText(this.firstItemTitle);
   }
 
   public async proceedToCheckout(): Promise<void> {
     await this.tap(this.checkoutButton);
+  }
+
+  public async removeFirstItem(): Promise<void> {
+    await this.tap(this.removeItemButton);
   }
 }
 
