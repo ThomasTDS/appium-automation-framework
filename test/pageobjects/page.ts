@@ -55,6 +55,10 @@ export default abstract class Page {
     await this.tap(this.byText(optionText));
   }
 
+  public async isTextDisplayed(text: string): Promise<boolean> {
+    return this.byText(text).isDisplayed();
+  }
+
   /**
    * Reinicia o app para um estado limpo e conhecido (deslogado, sem
    * carrinho, sem dados de sessoes anteriores). Chamado antes de cada
