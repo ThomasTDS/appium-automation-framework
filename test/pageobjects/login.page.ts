@@ -18,6 +18,10 @@ class LoginPage extends Page {
     return $(`android=new UiSelector().resourceId("${this.appId}:id/passwordErrorTV")`);
   }
 
+  private get screenTitle() {
+    return $(`android=new UiSelector().resourceId("${this.appId}:id/loginTV")`);
+  }
+
   public async openLoginScreen(): Promise<void> {
     await this.selectMenuOption('Log In');
   }
@@ -38,6 +42,10 @@ class LoginPage extends Page {
 
   public async getErrorMessageText(): Promise<string> {
     return this.getText(this.errorMessage);
+  }
+
+  public async isDisplayed(): Promise<boolean> {
+    return this.screenTitle.isDisplayed();
   }
 }
 
