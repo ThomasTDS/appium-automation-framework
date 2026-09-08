@@ -85,7 +85,14 @@ export const config = {
     source: true,
     strict: false,
     tagExpression: '',
-    timeout: 60000,
+    // 150s (em vez de 60s) porque esse timeout vale tanto para steps quanto
+    // para hooks (o @wdio/cucumber-framework usa este valor global para
+    // ambos, ignorando qualquer timeout individual passado a Before/After -
+    // ver comentario em test/step-definitions/hooks.ts). O hook `Before`
+    // reinicia a sessao do Appium a cada cenario via `resetApp()`, o que em
+    // emuladores mais lentos pode levar bem mais que 60s e fazia o cenario
+    // falhar por timeout antes mesmo de comecar.
+    timeout: 150000,
     ignoreUndefinedDefinitions: false,
   },
 };
