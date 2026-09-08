@@ -40,6 +40,16 @@ export const config = {
       'appium:app': androidAppPath,
       'appium:newCommandTimeout': 240,
       'appium:autoGrantPermissions': true,
+      // A splash screen do app transiciona pra MainActivity rapido demais:
+      // o UiAutomator2 espera a SplashActivity (activity de lancamento
+      // declarada no manifest) ficar em foco por ate 20s para considerar
+      // a sessao/app iniciados, mas na pratica o foco quase sempre ja
+      // esta em MainActivity no primeiro poll, fazendo o start falhar
+      // com "SplashActivity never started" mesmo o app tendo aberto
+      // normalmente. Listando as duas activities aqui, o driver aceita
+      // qualquer uma das duas como sinal de que o app iniciou.
+      'appium:appWaitActivity':
+        'com.saucelabs.mydemoapp.android.view.activities.SplashActivity,com.saucelabs.mydemoapp.android.view.activities.MainActivity',
     },
   ],
 
