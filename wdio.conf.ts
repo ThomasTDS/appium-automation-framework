@@ -40,6 +40,16 @@ export const config = {
       'appium:app': androidAppPath,
       'appium:newCommandTimeout': 240,
       'appium:autoGrantPermissions': true,
+      // A splash screen do app transiciona pra MainActivity rapido demais:
+      // o UiAutomator2 espera a SplashActivity (activity de lancamento
+      // declarada no manifest) ficar em foco por ate 20s para considerar
+      // a sessao/app iniciados, mas na pratica o foco quase sempre ja
+      // esta em MainActivity no primeiro poll, fazendo o start falhar
+      // com "SplashActivity never started" mesmo o app tendo aberto
+      // normalmente. Listando as duas activities aqui, o driver aceita
+      // qualquer uma das duas como sinal de que o app iniciou.
+      'appium:appWaitActivity':
+        'com.saucelabs.mydemoapp.android.view.activities.SplashActivity,com.saucelabs.mydemoapp.android.view.activities.MainActivity',
     },
   ],
 
@@ -85,7 +95,14 @@ export const config = {
     source: true,
     strict: false,
     tagExpression: '',
-    timeout: 60000,
+    // 150s (em vez de 60s) porque esse timeout vale tanto para steps quanto
+    // para hooks (o @wdio/cucumber-framework usa este valor global para
+    // ambos, ignorando qualquer timeout individual passado a Before/After -
+    // ver comentario em test/step-definitions/hooks.ts). O hook `Before`
+    // reinicia a sessao do Appium a cada cenario via `resetApp()`, o que em
+    // emuladores mais lentos pode levar bem mais que 60s e fazia o cenario
+    // falhar por timeout antes mesmo de comecar.
+    timeout: 150000,
     ignoreUndefinedDefinitions: false,
   },
 };
