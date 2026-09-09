@@ -15,6 +15,7 @@ dist/
 allure-results/
 allure-report/
 wdio-logs/
+test-results/
 .tsbuildinfo
 
 # Ambiente e IDE

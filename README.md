@@ -20,6 +20,7 @@ Este é um projeto de portfólio, desenvolvido para demonstrar, na prática, con
 - [Instalação](#instalação)
 - [Executando os testes](#executando-os-testes)
 - [Relatório de testes (Allure)](#relatório-de-testes-allure)
+- [Solução de problemas](#solução-de-problemas)
 - [Padrões de qualidade de código](#padrões-de-qualidade-de-código)
 - [Integração contínua](#integração-contínua)
 - [Cenários de teste implementados](#cenários-de-teste-implementados)
@@ -159,6 +160,18 @@ npm run report:open
 ```
 
 O relatório inclui os passos de cada cenário, tempo de execução e capturas de tela em caso de falha.
+
+## Solução de problemas
+
+**A janela do emulador abre, mas fica preta/travada, mesmo com os testes passando normalmente.**
+
+Isso costuma ser um problema de renderização por GPU do host (comum em notebooks com placa de vídeo híbrida, ex.: NVIDIA + Intel integrada), não um problema no aplicativo ou nos testes — como o Appium interage com o app pela árvore de acessibilidade do Android, e não pelos pixels da tela, a suíte continua funcionando normalmente mesmo com a tela preta. Para forçar o emulador a renderizar por software (mais lento, porém mais compatível) e confirmar o diagnóstico, inicie-o manualmente com:
+
+```bash
+emulator -avd medium_phone -gpu swiftshader_indirect
+```
+
+Se a tela passar a exibir o Android normalmente, o problema é o driver/configuração de GPU do host. Vale tentar atualizar o driver da placa de vídeo dedicada e/ou desativar "Hardware-accelerated GPU scheduling" nas configurações gráficas do Windows antes de recorrer à renderização por software permanentemente.
 
 ## Padrões de qualidade de código
 
