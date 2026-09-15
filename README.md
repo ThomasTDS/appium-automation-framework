@@ -161,6 +161,8 @@ npm run report:open
 
 O relatório inclui os passos de cada cenário, tempo de execução e capturas de tela em caso de falha.
 
+O relatório da execução mais recente na branch `main` também fica publicado automaticamente, sem precisar gerar nada localmente: **[ver relatório Allure ao vivo](https://thomastds.github.io/appium-automation-framework/)**.
+
 ## Solução de problemas
 
 **A janela do emulador abre, mas fica preta/travada, mesmo com os testes passando normalmente.**
@@ -196,7 +198,7 @@ Essas três verificações (lint, formatação e tipos) rodam automaticamente em
 
 ## Integração contínua
 
-A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.github/workflows/ci.yml`](.github/workflows/ci.yml) executa automaticamente toda a suíte de testes em um emulador Android hospedado no GitHub Actions, e publica o relatório Allure como artefato do workflow, disponível para download na aba **Actions** do repositório.
+A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.github/workflows/ci.yml`](.github/workflows/ci.yml) executa automaticamente toda a suíte de testes em um emulador Android hospedado no GitHub Actions, e publica o relatório Allure como artefato do workflow, disponível para download na aba **Actions** do repositório. Além disso, a cada `push` direto na `main`, o relatório é publicado automaticamente no GitHub Pages: [thomastds.github.io/appium-automation-framework](https://thomastds.github.io/appium-automation-framework/).
 
 ## Cenários de teste implementados
 
