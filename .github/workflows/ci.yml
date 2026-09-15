@@ -90,3 +90,30 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 30
+
+  publish-report:
+    name: Publicar relatorio Allure no GitHub Pages
+    needs: android-tests
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Baixar relatorio Allure gerado no job anterior
+        uses: actions/download-artifact@v8
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Preparar artefato para o GitHub Pages
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: allure-report
+
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
