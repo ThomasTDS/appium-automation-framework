@@ -196,6 +196,8 @@ npm run typecheck
 
 Essas três verificações (lint, formatação e tipos) rodam automaticamente em um job dedicado do CI a cada `push` ou _pull request_, de forma independente e em paralelo à execução dos testes end-to-end.
 
+Lint, formatação (só nos arquivos alterados, via [lint-staged](https://github.com/lint-staged/lint-staged)) e checagem de tipos também rodam localmente antes de cada commit, através de um hook de pre-commit configurado com [Husky](https://typicode.github.io/husky/). O hook é instalado automaticamente ao rodar `npm install`.
+
 ## Integração contínua
 
 A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.github/workflows/ci.yml`](.github/workflows/ci.yml) executa automaticamente toda a suíte de testes em um emulador Android hospedado no GitHub Actions, e publica o relatório Allure como artefato do workflow, disponível para download na aba **Actions** do repositório. Além disso, a cada `push` direto na `main`, o relatório é publicado automaticamente no GitHub Pages: [thomastds.github.io/appium-automation-framework](https://thomastds.github.io/appium-automation-framework/).
