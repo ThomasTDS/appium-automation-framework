@@ -62,6 +62,16 @@ export const config = {
   waitforTimeout: 30000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
+  // Ja aconteceu mais de uma vez (sempre no CI) de o emulador recem-criado
+  // ficar lento demais para renderizar a tela inicial do app logo na
+  // primeira interacao de um arquivo de spec inteiro, derrubando todos os
+  // cenarios daquele arquivo com "elemento nao encontrado apos Nms" mesmo
+  // sem nenhum problema real de codigo (confirmado repetidas vezes: um
+  // re-run manual, sem alterar nada, sempre resolve). Re-executar
+  // automaticamente um arquivo de spec que falhar assim evita precisar
+  // desse re-run manual no CI.
+  specFileRetries: 1,
+  specFileRetriesDeferred: false,
 
   services: [
     [
