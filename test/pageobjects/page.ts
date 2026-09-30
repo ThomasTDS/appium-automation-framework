@@ -90,4 +90,8 @@ export default abstract class Page {
   public async pause(ms: number): Promise<void> {
     await browser.pause(ms);
   }
+
+  public async goBack(): Promise<void> {
+    await browser.back();
+  }
 }
