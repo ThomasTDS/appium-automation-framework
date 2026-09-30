@@ -17,10 +17,6 @@ When('toca no botão de login', async () => {
   await LoginPage.submitLogin();
 });
 
-When('ele toca no botão de login sem preencher usuário ou senha', async () => {
-  await LoginPage.submitLogin();
-});
-
 Then('o menu do aplicativo deve exibir a opção {string}', async (menuOption: string) => {
   const isVisible = await LoginPage.isMenuOptionVisible(menuOption);
   expect(isVisible).toBe(true);

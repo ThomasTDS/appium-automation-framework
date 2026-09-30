@@ -16,7 +16,14 @@ Funcionalidade: Login no aplicativo
     E toca no botão de login
     Então uma mensagem de erro "Sorry this user has been locked out." deve ser exibida
 
-  Cenário: Login com campos vazios
+  Esquema do Cenário: Login com campos obrigatórios não preenchidos
     Dado que o usuário está na tela de login
-    Quando ele toca no botão de login sem preencher usuário ou senha
-    Então a mensagem "Username is required" deve ser exibida
+    Quando ele preenche o usuário "<usuário>" e a senha "<senha>"
+    E toca no botão de login
+    Então a mensagem "<mensagem>" deve ser exibida
+
+    Exemplos:
+      | usuário         | senha    | mensagem              |
+      |                 |          | Username is required  |
+      | bod@example.com |          | Enter Password        |
+      |                 | 10203040 | Username is required  |
