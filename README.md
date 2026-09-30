@@ -204,18 +204,18 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 
 ## Cenários de teste implementados
 
-| Funcionalidade | Cenário                             | Arquivo                                                                  |
-| -------------- | ----------------------------------- | ------------------------------------------------------------------------ |
-| Login          | Login com credenciais válidas       | [`test/features/login.feature`](test/features/login.feature)             |
-| Login          | Login com usuário bloqueado         | [`test/features/login.feature`](test/features/login.feature)             |
-| Login          | Login com campos vazios             | [`test/features/login.feature`](test/features/login.feature)             |
-| Carrinho       | Adicionar produto ao carrinho       | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
-| Carrinho       | Finalizar compra sem estar logado   | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
-| Carrinho       | Remover produto do carrinho         | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
-| Checkout       | Finalizar compra com sucesso        | [`test/features/checkout.feature`](test/features/checkout.feature)       |
-| QR Code        | Abrir o leitor de QR Code           | [`test/features/qrcode.feature`](test/features/qrcode.feature)           |
-| Desenho        | Desenhar no quadro e salvar         | [`test/features/drawing.feature`](test/features/drawing.feature)         |
-| Geolocalização | Definir localização reflete na tela | [`test/features/geolocation.feature`](test/features/geolocation.feature) |
+| Funcionalidade | Cenário                                                    | Arquivo                                                                  |
+| -------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Login          | Login com credenciais válidas                              | [`test/features/login.feature`](test/features/login.feature)             |
+| Login          | Login com usuário bloqueado                                | [`test/features/login.feature`](test/features/login.feature)             |
+| Login          | Login com campos obrigatórios não preenchidos (3 exemplos) | [`test/features/login.feature`](test/features/login.feature)             |
+| Carrinho       | Adicionar produto ao carrinho                              | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
+| Carrinho       | Finalizar compra sem estar logado                          | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
+| Carrinho       | Remover produto do carrinho                                | [`test/features/carrinho.feature`](test/features/carrinho.feature)       |
+| Checkout       | Finalizar compra com sucesso                               | [`test/features/checkout.feature`](test/features/checkout.feature)       |
+| QR Code        | Abrir o leitor de QR Code                                  | [`test/features/qrcode.feature`](test/features/qrcode.feature)           |
+| Desenho        | Desenhar no quadro e salvar                                | [`test/features/drawing.feature`](test/features/drawing.feature)         |
+| Geolocalização | Definir localização reflete na tela                        | [`test/features/geolocation.feature`](test/features/geolocation.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
 
