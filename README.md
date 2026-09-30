@@ -214,6 +214,7 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 | Carrinho       | Remover produto do carrinho       | [`test/features/carrinho.feature`](test/features/carrinho.feature) |
 | Checkout       | Finalizar compra com sucesso      | [`test/features/checkout.feature`](test/features/checkout.feature) |
 | QR Code        | Abrir o leitor de QR Code         | [`test/features/qrcode.feature`](test/features/qrcode.feature)     |
+| Desenho        | Desenhar no quadro e salvar       | [`test/features/drawing.feature`](test/features/drawing.feature)   |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
 
