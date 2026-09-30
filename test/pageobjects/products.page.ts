@@ -37,6 +37,10 @@ class ProductsPage extends Page {
   public async openCart(): Promise<void> {
     await this.tap(this.cartButton);
   }
+
+  public async isCatalogDisplayed(): Promise<boolean> {
+    return this.firstProductImage.isDisplayed();
+  }
 }
 
 export default new ProductsPage();
