@@ -216,6 +216,7 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 | QR Code        | Abrir o leitor de QR Code                                  | [`test/features/qrcode.feature`](test/features/qrcode.feature)           |
 | Desenho        | Desenhar no quadro e salvar                                | [`test/features/drawing.feature`](test/features/drawing.feature)         |
 | Geolocalização | Definir localização reflete na tela                        | [`test/features/geolocation.feature`](test/features/geolocation.feature) |
+| Biometria      | Tela indica indisponibilidade no dispositivo               | [`test/features/fingerprint.feature`](test/features/fingerprint.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
 
