@@ -14,8 +14,17 @@ class CartPage extends Page {
     return $('~Removes product from cart');
   }
 
+  private get quantityValue() {
+    return $(`android=new UiSelector().resourceId("${this.appId}:id/noTV")`);
+  }
+
   public async getFirstItemTitle(): Promise<string> {
     return this.getText(this.firstItemTitle);
+  }
+
+  public async getQuantity(): Promise<number> {
+    const text = await this.getText(this.quantityValue);
+    return Number(text);
   }
 
   public async proceedToCheckout(): Promise<void> {

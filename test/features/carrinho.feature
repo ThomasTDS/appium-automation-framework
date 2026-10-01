@@ -21,3 +21,21 @@ Funcionalidade: Carrinho de compras
     Quando ele adiciona o primeiro produto da lista ao carrinho
     E ele remove o item do carrinho
     Então o carrinho deve exibir a mensagem "No Items"
+
+  Cenário: Ajustar a quantidade antes de adicionar ao carrinho
+    Dado que o usuário está navegando pelo catálogo de produtos
+    Quando ele abre o primeiro produto da lista
+    E ele aumenta a quantidade em 2
+    E ele adiciona o produto ao carrinho
+    E ele abre o carrinho
+    Então o carrinho deve exibir 3 itens
+    E a quantidade do item no carrinho deve ser 3
+
+  Cenário: Adicionar o mesmo produto duas vezes soma a quantidade no carrinho
+    Dado que o usuário está navegando pelo catálogo de produtos
+    Quando ele abre o primeiro produto da lista
+    E ele adiciona o produto ao carrinho
+    E ele volta para o catálogo e adiciona o mesmo produto novamente
+    E ele abre o carrinho
+    Então o carrinho deve exibir 2 itens
+    E a quantidade do item no carrinho deve ser 2
