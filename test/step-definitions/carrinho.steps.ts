@@ -22,9 +22,40 @@ When('ele remove o item do carrinho', async () => {
   await CartPage.removeFirstItem();
 });
 
-Then('o carrinho deve exibir {int} item', async (expectedCount: number) => {
+When('ele abre o primeiro produto da lista', async () => {
+  await ProductsPage.openFirstProduct();
+});
+
+When('ele aumenta a quantidade em {int}', async (amount: number) => {
+  await ProductsPage.increaseQuantity(amount);
+});
+
+When('ele adiciona o produto ao carrinho', async () => {
+  await ProductsPage.addCurrentProductToCart();
+});
+
+When('ele abre o carrinho', async () => {
+  await ProductsPage.openCart();
+});
+
+When('ele volta para o catálogo e adiciona o mesmo produto novamente', async () => {
+  await ProductsPage.goBack();
+  await ProductsPage.openFirstProduct();
+  await ProductsPage.addCurrentProductToCart();
+});
+
+// Aceita "item" (singular) e "itens" (plural) no mesmo step, ja que a
+// pluralizacao em portugues muda o final da palavra (nao e so um "s" no
+// fim, como em ingles), o que a sintaxe de texto opcional das Cucumber
+// Expressions (ex.: "item(s)") nao cobre.
+Then(/^o carrinho deve exibir (\d+) (?:item|itens)$/, async (expectedCount: string) => {
   const badgeText = await ProductsPage.getCartBadgeCount();
-  expect(Number(badgeText)).toBe(expectedCount);
+  expect(Number(badgeText)).toBe(Number(expectedCount));
+});
+
+Then('a quantidade do item no carrinho deve ser {int}', async (expectedQuantity: number) => {
+  const quantity = await CartPage.getQuantity();
+  expect(quantity).toBe(expectedQuantity);
 });
 
 Then('o item no carrinho deve ser {string}', async (expectedTitle: string) => {

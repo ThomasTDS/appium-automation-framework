@@ -18,6 +18,10 @@ class ProductsPage extends Page {
     return $('~View cart');
   }
 
+  private get increaseQuantityButton() {
+    return $('~Increase item quantity');
+  }
+
   public async waitForCatalogToLoad(): Promise<void> {
     await this.waitForDisplayed(this.firstProductImage);
   }
@@ -40,6 +44,12 @@ class ProductsPage extends Page {
 
   public async isCatalogDisplayed(): Promise<boolean> {
     return this.firstProductImage.isDisplayed();
+  }
+
+  public async increaseQuantity(times: number): Promise<void> {
+    for (let i = 0; i < times; i += 1) {
+      await this.tap(this.increaseQuantityButton);
+    }
   }
 }
 
