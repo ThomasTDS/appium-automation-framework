@@ -9,6 +9,10 @@ Framework de automação de testes end-to-end para aplicativos Android, constru�
 
 Este é um projeto de portfólio, desenvolvido para demonstrar, na prática, conhecimentos de automação de testes mobile: definição de cenários em linguagem de negócio, organização de código sustentável, execução em emulador Android e integração contínua.
 
+![Demonstração da suíte executando o fluxo de compra no emulador Android](docs/demo.gif)
+
+<sub>Gravação real do cenário de checkout (`npm test`) rodando contra o emulador Android: login, adição ao carrinho, preenchimento de endereço e pagamento, até a confirmação do pedido.</sub>
+
 ## Sumário
 
 - [Sobre o projeto](#sobre-o-projeto)
@@ -54,6 +58,7 @@ O aplicativo utilizado como alvo dos testes é o [My Demo App](https://github.co
 .
 ├── .github/workflows/       # Pipeline de integração contínua
 ├── apps/                    # Local onde o APK do app sob teste deve ser colocado
+├── docs/                    # Imagens/GIFs usados neste README
 ├── test/
 │   ├── features/            # Cenários de teste em Gherkin (.feature)
 │   ├── pageobjects/         # Page Objects (classe base + telas do app)
