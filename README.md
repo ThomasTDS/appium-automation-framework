@@ -30,6 +30,7 @@ Este é um projeto de portfólio, desenvolvido para demonstrar, na prática, con
 - [Cenários de teste implementados](#cenários-de-teste-implementados)
 - [Bugs encontrados](#bugs-encontrados)
 - [Reportando problemas](#reportando-problemas)
+- [Changelog](#changelog)
 - [Licença](#licença)
 - [Autor](#autor)
 
@@ -239,6 +240,10 @@ Defeitos reais da aplicação sob teste, descobertos durante o desenvolvimento d
 ## Reportando problemas
 
 Bugs encontrados na aplicação sob teste, no pipeline de CI ou na própria automação são registrados como [Issues do GitHub](../../issues/new/choose), usando um template padronizado que cobre ambiente, severidade, prioridade, passos de reprodução e causa raiz.
+
+## Changelog
+
+O histórico de mudanças notáveis deste projeto é mantido em [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Licença
 
