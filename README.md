@@ -28,6 +28,7 @@ Este é um projeto de portfólio, desenvolvido para demonstrar, na prática, con
 - [Padrões de qualidade de código](#padrões-de-qualidade-de-código)
 - [Integração contínua](#integração-contínua)
 - [Cenários de teste implementados](#cenários-de-teste-implementados)
+- [Bugs encontrados](#bugs-encontrados)
 - [Reportando problemas](#reportando-problemas)
 - [Licença](#licença)
 - [Autor](#autor)
@@ -226,6 +227,14 @@ A cada `push` ou _pull request_ para a branch `main`, o workflow definido em [`.
 | Biometria      | Tela indica indisponibilidade no dispositivo               | [`test/features/fingerprint.feature`](test/features/fingerprint.feature) |
 
 Esta lista é atualizada conforme novos cenários são adicionados ao projeto.
+
+## Bugs encontrados
+
+Defeitos reais da aplicação sob teste, descobertos durante o desenvolvimento dos cenários e registrados como Issues do GitHub com passos de reprodução, evidência e análise de causa.
+
+| Issue                                                                     | Resumo                                                                                            | Severidade |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ---------- |
+| [#22](https://github.com/ThomasTDS/appium-automation-framework/issues/22) | Login aceita qualquer usuário/senha, exceto e-mails na lista de bloqueio — a senha não é validada | Critical   |
 
 ## Reportando problemas
 
