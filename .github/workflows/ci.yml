@@ -80,6 +80,23 @@ jobs:
           disable-animations: true
           script: npm test
 
+      # Copia o historico de execucoes anteriores (publicado no GitHub Pages)
+      # para dentro de allure-results/history antes de gerar o relatorio - e
+      # assim que o Allure sabe montar o grafico de tendencia (Trend) entre
+      # execucoes. Cada arquivo e baixado individualmente porque a primeira
+      # publicacao do projeto (ou a primeira apos limpar o historico) nao tem
+      # nenhum desses arquivos ainda - um 404 por arquivo e esperado nesse
+      # caso, e nao deve interromper o restante do workflow.
+      - name: Baixar historico anterior do Allure (GitHub Pages)
+        if: always()
+        run: |
+          mkdir -p allure-results/history
+          for f in history.json history-trend.json categories-trend.json duration-trend.json retry-trend.json; do
+            curl -fsSL -o "allure-results/history/$f" \
+              "https://thomastds.github.io/appium-automation-framework/history/$f" \
+              || { echo "Sem historico anterior para $f (normal na primeira publicacao)."; rm -f "allure-results/history/$f"; }
+          done
+
       - name: Gerar relatorio Allure
         if: always()
         run: npm run report:generate
