@@ -34,6 +34,16 @@ jobs:
       - name: Checagem de tipos (TypeScript)
         run: npm run typecheck
 
+      # Nao bloqueia o build: ha vulnerabilidades conhecidas em dependencias
+      # transitivas de pacotes do WebdriverIO (ver internal-docs/DECISOES.md,
+      # entrada "Estrutura base do framework implementada"), aceitas
+      # conscientemente por serem usadas so em tempo de desenvolvimento/teste,
+      # nunca em codigo de producao. Esta etapa mantem o resultado visivel no
+      # log do CI para acompanhamento, sem reabrir essa decisao a cada PR.
+      - name: Auditoria de vulnerabilidades (informativo)
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
   android-tests:
     name: Testes Android (Appium + WebdriverIO)
     runs-on: ubuntu-latest
