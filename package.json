@@ -2,6 +2,30 @@
   "name": "appium-automation-framework",
   "version": "1.0.0",
   "description": "Framework de automacao de testes mobile com Appium, WebdriverIO e TypeScript, utilizando BDD (Cucumber) e Page Object Model.",
+  "keywords": [
+    "appium",
+    "webdriverio",
+    "typescript",
+    "mobile-testing",
+    "test-automation",
+    "bdd",
+    "cucumber",
+    "page-object-model",
+    "android",
+    "e2e-testing"
+  ],
+  "homepage": "https://github.com/ThomasTDS/appium-automation-framework#readme",
+  "bugs": {
+    "url": "https://github.com/ThomasTDS/appium-automation-framework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasTDS/appium-automation-framework.git"
+  },
+  "author": {
+    "name": "Thomas Teixeira",
+    "url": "https://github.com/ThomasTDS"
+  },
   "private": true,
   "license": "MIT",
   "type": "module",
