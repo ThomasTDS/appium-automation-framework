@@ -80,6 +80,19 @@ export const config = {
         command: 'appium',
       },
     ],
+    // Compara screenshots contra uma baseline para detectar regressoes
+    // visuais. A baseline precisa ser gerada no mesmo ambiente em que sera
+    // comparada (ver test/visual-baseline/README.md) - nao versionar aqui
+    // uma baseline gerada localmente e esperar que ela bata com o CI.
+    [
+      'visual',
+      {
+        baselineFolder: path.join(process.cwd(), 'test', 'visual-baseline'),
+        screenshotPath: path.join(process.cwd(), '.tmp', 'visual-actual'),
+        formatImageName: '{tag}-{width}x{height}',
+        autoSaveBaseline: true,
+      },
+    ],
   ],
 
   framework: 'cucumber',

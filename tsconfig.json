@@ -9,7 +9,13 @@
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "@wdio/globals/types", "@wdio/cucumber-framework", "expect-webdriverio"]
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "@wdio/cucumber-framework",
+      "expect-webdriverio",
+      "@wdio/visual-service"
+    ]
   },
   "include": ["wdio.conf.ts", "test/**/*.ts"]
 }

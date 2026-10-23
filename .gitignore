@@ -18,6 +18,10 @@ wdio-logs/
 test-results/
 .tsbuildinfo
 
+# Screenshots reais capturados pelo @wdio/visual-service a cada execução
+# (comparados contra test/visual-baseline/, que é versionada)
+.tmp/
+
 # Ambiente e IDE
 .env
 .idea/

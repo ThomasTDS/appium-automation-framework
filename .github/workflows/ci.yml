@@ -90,6 +90,18 @@ jobs:
           disable-animations: true
           script: npm test
 
+      # So existe conteudo aqui numa tag de baseline visual nova (ver
+      # test/visual-baseline/README.md) - o workflow precisa aceitar rodar
+      # sem esse artefato quando nao houver nada novo a publicar.
+      - name: Publicar baseline visual gerada (se houver)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: visual-baseline
+          path: test/visual-baseline
+          if-no-files-found: ignore
+          retention-days: 7
+
       # Copia o historico de execucoes anteriores (publicado no GitHub Pages)
       # para dentro de allure-results/history antes de gerar o relatorio - e
       # assim que o Allure sabe montar o grafico de tendencia (Trend) entre
