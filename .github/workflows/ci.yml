@@ -45,9 +45,13 @@ jobs:
         continue-on-error: true
 
   android-tests:
-    name: Testes Android (Appium + WebdriverIO)
+    name: Testes Android (Appium + WebdriverIO) - shard ${{ matrix.shard }}/${{ strategy.job-total }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - name: Checkout do codigo
         uses: actions/checkout@v7
@@ -79,7 +83,11 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Rodar a suite de testes no emulador Android
+      # Cada shard roda num emulador/runner independente, dividindo os
+      # arquivos .feature entre si via --shard do WebdriverIO (ver
+      # internal-docs/DECISOES.md). O numero total de shards precisa bater
+      # com o tamanho de matrix.shard acima.
+      - name: Rodar a suite de testes no emulador Android (shard ${{ matrix.shard }})
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
@@ -88,7 +96,44 @@ jobs:
           profile: pixel_6
           avd-name: medium_phone
           disable-animations: true
-          script: npm test
+          script: npx wdio run ./wdio.conf.ts --shard ${{ matrix.shard }}/3
+
+      - name: Publicar resultados brutos do Allure deste shard
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: allure-results-shard-${{ matrix.shard }}
+          path: allure-results
+          retention-days: 1
+
+  merge-allure-report:
+    name: Combinar resultados dos shards e gerar relatorio Allure
+    needs: android-tests
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v7
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Junta os resultados brutos de todos os shards numa unica pasta antes
+      # de gerar o relatorio - o Allure agrega qualquer conjunto de arquivos
+      # de resultado encontrado no diretorio, independente de qual shard os
+      # produziu.
+      - name: Baixar e combinar resultados de todos os shards
+        uses: actions/download-artifact@v8
+        with:
+          pattern: allure-results-shard-*
+          path: allure-results
+          merge-multiple: true
 
       # So existe conteudo aqui numa tag de baseline visual nova (ver
       # test/visual-baseline/README.md) - o workflow precisa aceitar rodar
@@ -133,7 +178,7 @@ jobs:
 
   publish-report:
     name: Publicar relatorio Allure no GitHub Pages
-    needs: android-tests
+    needs: merge-allure-report
     if: ${{ !cancelled() && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     runs-on: ubuntu-latest
     permissions:
