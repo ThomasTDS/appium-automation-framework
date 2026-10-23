@@ -94,4 +94,24 @@ export default abstract class Page {
   public async goBack(): Promise<void> {
     await browser.back();
   }
+
+  /**
+   * Compara a tela atual contra a baseline visual salva sob a mesma tag
+   * (ver test/visual-baseline/). Retorna o percentual de diferença (0 =
+   * identica); quem chama decide a tolerancia aceitavel.
+   *
+   * O tipo de retorno do `checkScreen` tambem cobre sessao multiremote
+   * (um resultado por instancia) e um formato de objeto detalhado, nenhum
+   * dos dois usado neste projeto (uma unica capability, opcoes padrao) -
+   * por isso a checagem em runtime abaixo, em vez de so um cast de tipo.
+   */
+  public async compareScreenWithBaseline(tag: string): Promise<number> {
+    const result = await browser.checkScreen(tag);
+    if (typeof result !== 'number') {
+      throw new Error(
+        'Resultado inesperado do checkScreen: esperava um numero (sessao unica, sem multiremote).',
+      );
+    }
+    return result;
+  }
 }
