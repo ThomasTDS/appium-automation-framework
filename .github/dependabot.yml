@@ -5,8 +5,26 @@ updates:
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 5
+    # Agrupa updates de patch/minor numa unica PR semanal - de baixo risco,
+    # nao precisam de revisao individual. Updates de major ficam de fora do
+    # grupo de proposito (continuam cada um na sua PR), porque podem trazer
+    # mudanca que quebra o projeto e exigem atencao isolada - foi exatamente
+    # o caso do bump de TypeScript 6 para 7, incompativel com o
+    # typescript-eslint em uso (ver internal-docs/DECISOES.md).
+    groups:
+      npm-patch-e-minor:
+        applies-to: version-updates
+        update-types:
+          - 'minor'
+          - 'patch'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      github-actions-patch-e-minor:
+        applies-to: version-updates
+        update-types:
+          - 'minor'
+          - 'patch'
