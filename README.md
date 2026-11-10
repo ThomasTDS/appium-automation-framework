@@ -1,6 +1,6 @@
 # Appium Automation Framework
 
-**🇧🇷 Português** | [🇺🇸 English](README.en.md)
+**🇧🇷 Português** | [🇺🇸 English](README.en.md) | [🇪🇸 Español](README.es.md)
 
 ![CI](https://github.com/ThomasTDS/appium-automation-framework/actions/workflows/ci.yml/badge.svg)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)
